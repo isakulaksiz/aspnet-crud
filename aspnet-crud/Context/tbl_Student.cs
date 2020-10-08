@@ -11,7 +11,7 @@ namespace aspnet_crud.Context
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class tbl_Student
     {
         public int ID { get; set; }
