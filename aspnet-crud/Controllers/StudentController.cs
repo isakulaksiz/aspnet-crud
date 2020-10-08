@@ -19,17 +19,28 @@ namespace aspnet_crud.Controllers
         [HttpPost]
         public ActionResult addStudent(tbl_Student model)
         {
-            tbl_Student obj = new tbl_Student();
-            obj.Name = model.Name;
-            obj.Fname = model.Fname;
-            obj.Email = model.Email;
-            obj.Mobile = model.Mobile;
-            obj.Description = model.Description;
+            if (ModelState.IsValid)
+            {
+                tbl_Student obj = new tbl_Student();
+                obj.Name = model.Name;
+                obj.Fname = model.Fname;
+                obj.Email = model.Email;
+                obj.Mobile = model.Mobile;
+                obj.Description = model.Description;
 
-            dbObj.tbl_Student.Add(obj);
-            dbObj.SaveChanges();
-
+                dbObj.tbl_Student.Add(obj);
+                dbObj.SaveChanges();
+            }
+            ModelState.Clear();
+            
             return View("Student");
+        }
+
+        public ActionResult StudentList()
+        {
+            var res = dbObj.tbl_Student.ToList();
+
+            return View(res);
         }
     }
 }
