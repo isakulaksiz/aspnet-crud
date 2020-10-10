@@ -16,7 +16,8 @@ namespace aspnet_crud.Context
 
     public partial class tbl_Student
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
         [Required(ErrorMessage ="Required")]
